@@ -1,0 +1,28 @@
+<div id="container" ng-cloak>
+  <md-toolbar class="demo-toolbar md-primary">
+    <div class="md-toolbar-tools">
+      <h3 class="ng-binding">用户登录</h3>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <form name="loginForm" ng-submit="processForm(credentials)">
+      <md-input-container class="md-block">
+        <label>用户名</label>
+        <input type="text" name="username" ng-model="credentials.username">
+        <div ng-messages="loginForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The username has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>密码</label>
+        <input type="password" name="password" ng-model="credentials.password">
+        <div ng-messages="loginForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+      <md-button type="submit" ng-disabled="loading" class="md-raised md-primary">登录</md-button>
+    </form>
+  </md-content>
+</div>

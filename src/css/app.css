@@ -1,0 +1,4 @@
+html, body{ background-color: #e5e5e5; }
+#container{ width: 350px; margin: 150px auto; }
+#container form .md-block:last-child{ margin-bottom: 0; }
+#container form .md-primary{ margin: 0; padding: 0; }
