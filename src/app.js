@@ -15,11 +15,11 @@ myApp.constant('API', 'http://a.example.com/app_dev.php');
 myApp.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      controller: 'HomeController',
+      controller: 'homeController',
       templateUrl: 'partials/home.html'
     })
     .when('/login', {
-      controller: 'LoginController',
+      controller: 'loginController',
       templateUrl: 'partials/login.html'
     });
 });
@@ -97,37 +97,4 @@ myApp.run(function($rootScope, $location, $http, TokenManager, API) {
       $rootScope.user = res.data;
     });
   });
-});
-
-/**
- * 首页控制器
- */
-myApp.controller('HomeController', function($scope, $location, TokenManager) {
-  $scope.processLogout = function() {
-    TokenManager.removeToken();
-    $location.path('/login');
-  }
-});
-
-/**
- * 登录控制器
- */
-myApp.controller('LoginController', function($scope, $location, $http, TokenManager, API) {
-  
-  $scope.credentials = {
-    username: 'thenbsp',
-    password: '123456'
-  };
-
-  $scope.processForm = function(credentials) {
-    $http.post(API + '/auth/login', $scope.credentials)
-      .success(function(res) {
-        if (res.code !== 200) {
-          alert(res.data);
-          return false;
-        }
-        TokenManager.setToken(res.data);
-        $location.path('/');
-      });
-  }
 });
